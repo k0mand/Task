@@ -1,0 +1,14 @@
+<?xml version="1.0"?>
+
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Backend:etc/menu.xsd">
+    <menu>
+        <add id="Task_Customer::request_contact"
+             title="Contact Requests"
+             translate="title"
+             module="Task_Customer"
+             sortOrder="30"
+             parent="Magento_Customer::customer"
+             action="customer/requestcontact/index"
+             resource="Task_Customer::customer_request_contact"/>
+    </menu>
+</config>
