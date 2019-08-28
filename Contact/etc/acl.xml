@@ -1,0 +1,24 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Acl configuration
+ *
+ * @category  Smile
+ * @package   Smile\Contact
+ * @author    Roman Koshyk <romadaaaa@gmail.com>
+ */
+-->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:Acl/etc/acl.xsd">
+    <acl>
+        <resources>
+            <resource id="Magento_Backend::admin">
+                <resource id="Smile_Contact::contact_core" title="Contact Us" translate="title">
+                    <resource id="Smile_Contact::contact_us" title="Contact Requests" translate="title" sortOrder="10">
+                        <resource id="Smile_Contact::contact_us_save" title="Save contact" translate="title" sortOrder="10"/>
+                        <resource id="Smile_Contact::contact_us_delete" title="Delete contact" translate="title" sortOrder="20"/>
+                    </resource>
+                </resource>
+            </resource>
+        </resources>
+    </acl>
+</config>

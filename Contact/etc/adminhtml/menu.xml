@@ -1,0 +1,29 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Smile Contact menu
+ *
+* @category   Smile
+ * @package   Smile\Contact
+ * @author    Roman Koshyk <romadaaaa@gmail.com>
+ */
+-->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Backend:etc/menu.xsd">
+    <menu>
+        <add id="Smile_Contact::contact_core"
+             title="Contact Us"
+             translate="title"
+             module="Smile_Contact"
+             sortOrder="50"
+             resource="Smile_Contact::contact_core"/>
+
+        <add id="Smile_Contact::contact_us"
+             title="Contact Requests"
+             translate="title"
+             module="Smile_Contact"
+             sortOrder="10"
+             parent="Smile_Contact::contact_core"
+             action="contact/contact/index"
+             resource="Smile_Contact::contact_us"/>
+    </menu>
+</config>

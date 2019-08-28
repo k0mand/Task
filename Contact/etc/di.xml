@@ -1,0 +1,56 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
+    <preference for="Smile\Contact\Api\Data\ContactInterface" type="Smile\Contact\Model\Contact" />
+    <preference for="Smile\Contact\Api\ContactRepositoryInterface" type="Smile\Contact\Model\ContactRepository" />
+    <preference for="Smile\Contact\Api\Data\ContactSearchResultsInterface" type="Magento\Framework\Api\SearchResults" />
+    <type name="Magento\Framework\View\Element\UiComponent\DataProvider\CollectionFactory">
+        <arguments>
+            <argument name="collections" xsi:type="array">
+                <item name="smile_contact_us_listing_data_source" xsi:type="string">Smile\Contact\Model\ResourceModel\Contact\Grid\Collection</item>
+            </argument>
+        </arguments>
+    </type>
+    <type name="Smile\Contact\Model\ResourceModel\Contact\Grid\Collection">
+        <arguments>
+            <argument name="mainTable" xsi:type="string">smile_contact_us</argument>
+            <argument name="eventPrefix" xsi:type="string">contact_us_grid_collection</argument>
+            <argument name="eventObject" xsi:type="string">contact_grid_collection</argument>
+            <argument name="resourceModel" xsi:type="string">Smile\Contact\Model\ResourceModel\Contact</argument>
+        </arguments>
+    </type>
+    <virtualType name="ContactContactGridFilterPool" type="Magento\Framework\View\Element\UiComponent\DataProvider\FilterPool">
+        <arguments>
+            <argument name="appliers" xsi:type="array">
+                <item name="regular" xsi:type="object">Magento\Framework\View\Element\UiComponent\DataProvider\RegularFilter</item>
+                <item name="fulltext" xsi:type="object">Magento\Framework\View\Element\UiComponent\DataProvider\FulltextFilter</item>
+            </argument>
+        </arguments>
+    </virtualType>
+    <type name="Magento\Framework\Model\Entity\RepositoryFactory">
+        <arguments>
+            <argument name="entities" xsi:type="array">
+                <item name="Smile\Contact\Api\Data\ContactInterface" xsi:type="string">Smile\Contact\Api\ContactRepositoryInterface</item>
+            </argument>
+        </arguments>
+    </type>
+    <type name="Magento\Framework\EntityManager\MetadataPool">
+        <arguments>
+            <argument name="metadata" xsi:type="array">
+                <item name="Smile\Contact\Api\Data\ContactInterface" xsi:type="array">
+                    <item name="entityTableName" xsi:type="string">smile_contact_us</item>
+                    <item name="identifierField" xsi:type="string">id</item>
+                </item>
+            </argument>
+        </arguments>
+    </type>
+    <type name="Magento\Framework\EntityManager\HydratorPool">
+        <arguments>
+            <argument name="hydrators" xsi:type="array">
+                <item name="Smile\Contact\Api\Data\ContactInterface" xsi:type="string">Magento\Framework\EntityManager\AbstractModelHydrator</item>
+            </argument>
+        </arguments>
+    </type>
+    <type name="Magento\Contact\Controller\Index\Post">
+        <plugin name="smile_before_post_execute" type="Smile\Contact\Plugin\Controller\Index\BeforePostExecute"/>
+    </type>
+</config>
